@@ -1,0 +1,26 @@
+.stock-tickers-header {
+}
+.stock-tickers-hr {
+    border-top: solid 1px #ebebeb;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px #fff;
+    margin: 0;
+}
+.stock-tickers-title {
+    padding-left:10px;
+    text-align: left;
+    font-size: 24pt;
+}
+.stock-tickers-count {
+    padding-left:10px;
+    text-align: left;
+    color: #777;
+}
+.stock-ticker-list {
+    height: calc(100vh - 90px);
+    overflow: auto;
+    min-width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

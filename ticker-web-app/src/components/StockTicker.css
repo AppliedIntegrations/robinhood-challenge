@@ -1,0 +1,45 @@
+
+.ticker-row {
+    display:flex;
+    flex-direction: row;
+    height: 110px;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ticker-cell {
+}
+.ticker-row .ticker-cell:nth-child(1){
+    flex-grow: 1;
+    text-align: left;;
+}
+.ticker-row .ticker-cell:nth-child(2){
+    min-width: 160px;
+    text-align: right;
+}
+.ticker-row .ticker-cell:nth-child(3){
+    min-width: 160px;
+}
+.symbol {
+    color: #333;
+}
+.name {
+    color: #777;
+}
+.value {
+    padding: 8px;
+    margin-right:10px;
+}
+.percentage-change {
+    padding: 8px;
+    border-radius: 6px;
+    color: #fff;
+}
+.percentage-change.positive {
+    background-color: #3edb5b;
+}
+.percentage-change.negative {
+    background-color: #ff392a;
+}

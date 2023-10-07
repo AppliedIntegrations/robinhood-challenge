@@ -1,0 +1,11 @@
+{
+  "name": "ticker-web-api",
+  "version": "1.0.0",
+  "description": "Node server to handle API requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jon Camuso",
+  "license": "ISC"
+}
