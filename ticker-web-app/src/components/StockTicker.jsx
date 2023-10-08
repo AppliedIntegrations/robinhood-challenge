@@ -1,6 +1,6 @@
 import './StockTicker.css'
 
-export function StockTicker({ symbol, name, chart, value, percentageChange }) {
+export function StockTicker({ symbol, name, chart, price, percentageChange }) {
     let percentageChangeClass = 'percentage-change';
     percentageChangeClass += percentageChange < 0 ? ' negative': ' positive';
     return (
@@ -11,7 +11,7 @@ export function StockTicker({ symbol, name, chart, value, percentageChange }) {
                 <div className='name'>{name}</div>
             </div>
             <div className='ticker-cell'>
-                <div className='value'>{value}</div>
+                <div className='price'>{price}</div>
             </div>
             <div className='ticker-cell'>
                 <div className={percentageChangeClass}>{percentageChange}%</div>

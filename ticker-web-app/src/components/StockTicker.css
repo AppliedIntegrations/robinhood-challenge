@@ -28,7 +28,7 @@
 .name {
     color: #777;
 }
-.value {
+.price {
     padding: 8px;
     margin-right:10px;
 }
@@ -36,6 +36,7 @@
     padding: 8px;
     border-radius: 6px;
     color: #fff;
+    text-align: center;
 }
 .percentage-change.positive {
     background-color: #3edb5b;

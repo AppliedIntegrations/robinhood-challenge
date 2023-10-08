@@ -4,8 +4,12 @@
   "description": "Node server to handle API requests",
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "test": "test"
   },
   "author": "Jon Camuso",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.7.2"
+  }
 }
