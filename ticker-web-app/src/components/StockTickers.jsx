@@ -3,26 +3,32 @@ import { useEffect, useState } from 'react';
 import { StockTicker } from './StockTicker';
 import './StockTickers.css';
 
-const socket = io('http://localhost:3000', {
-    transports: [
-        'websocket',
-        'polling',
-    ]
-});
-
 export function StockTickers({symbols}) {
 
-    socket.on('connect', () => {
-        console.log('request stocks ', symbols);
-        socket.emit('request-stocks', symbols);
-    });
-        const [stocks, setStocks] = useState([]);
+    const [stocks, setStocks] = useState([]);
 
     useEffect(() => {
+        console.log('in useEffect')
+        const socket = io('http://localhost:3000', {
+            withCredentials: true,
+            transports: [
+                'websocket',
+                'polling',
+            ]
+        });
+        
+        socket.on('connect', () => {
+            console.log('request stocks ', symbols);
+            socket.emit('request-stocks', symbols);
+        });    
+
         socket.on('stocks', stockData => {
             console.log('socket on stockData is ', stockData);
             setStocks(stockData)
-        })
+        });
+        return function cleanup() {
+            socket.disconnect()
+        };
     }, [])
     return (
       <>
@@ -42,7 +48,7 @@ export function StockTickers({symbols}) {
                     />
                 )
             })}
-        </div>       
+        </div>
       </>
     )
 }

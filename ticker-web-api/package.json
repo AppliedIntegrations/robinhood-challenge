@@ -10,6 +10,7 @@
   "author": "Jon Camuso",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^2.7.0",
     "socket.io": "^4.7.2"
   }
 }

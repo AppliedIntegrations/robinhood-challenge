@@ -1,7 +1,9 @@
-export function AppFooter() {
+export function AppFooter({changeShowStockTicker}) {
     return (
         <>
-            <footer ></footer>
+            <footer >
+                <button  onClick={() => changeShowStockTicker()}>show hide stock ticker</button>
+            </footer>
         </>
     )
 }
