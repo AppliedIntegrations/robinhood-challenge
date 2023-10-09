@@ -38,6 +38,7 @@ const LastTrade = {
     },
 }
 
+
 const getLastTradeOptions = {
     schema: {
       response: {
@@ -48,7 +49,7 @@ const getLastTradeOptions = {
       },
     },
     handler: getLastTrade,
-  }
+}
 
 
 function equitiesRoutes(fastify, options, done) {

@@ -9,7 +9,6 @@ const lastTrades = [
         securityClass: "Q",
         changeIndicator: 0,
 
-        // name: 'GLOBALFOUNDRIES Inc.',
         // percentageChange: 5.0,
     },
     {
@@ -20,7 +19,6 @@ const lastTrades = [
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-        // name: 'Baker Hughes Company',
         // percentageChange: 5.0,
     },
     {
@@ -31,7 +29,6 @@ const lastTrades = [
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-        // name: 'Copart, Inc.',
         // percentageChange: -5.0,
     },
     {
@@ -43,7 +40,6 @@ const lastTrades = [
         securityClass: "Q",
         changeIndicator: 0,
 
-        // name: 'PDD Holdings Inc.',
         // percentageChange: 5.0,
     },
     {
@@ -54,10 +50,47 @@ const lastTrades = [
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-        // name: 'CrowdStrike Holdings, Inc.',
         // percentageChange: 5.0,
     },
 ];
+
+const symbolDetails = [
+    {
+        symbol:'GFS',
+        securityName: 'GLOBALFOUNDRIES Inc.',
+        etf: false,
+        listingExchange: "Q",
+        ipoFlag: "N"
+    },
+    {
+        symbol:'BKR',
+        securityName: 'Baker Hughes Company',
+        etf: false,
+        listingExchange: "Q",
+        ipoFlag: "N"
+    },
+    {
+        symbol:'CPRT',
+        securityName: 'Copart, Inc.',
+        etf: false,
+        listingExchange: "Q",
+        ipoFlag: "N"
+    },
+    {
+        symbol:'PDD',
+        securityName: 'PDD Holdings Inc.',
+        etf: false,
+        listingExchange: "Q",
+        ipoFlag: "N"
+    },
+    {
+        symbol:'CRWD',
+        securityName: 'CrowdStrike Holdings, Inc.',
+        etf: false,
+        listingExchange: "Q",
+        ipoFlag: "N"
+    },
+]
 
 function getLastTrade(symbols){
     console.log('symbols ', symbols);
@@ -92,6 +125,18 @@ function getRandomPriceInRange(originalPrice) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function getSymbolDetails(symbol){
+    const detail = symbolDetails.find(symbolDetail => {
+        if(symbolDetail.symbol === symbol){
+            return true
+        }
+    });
+    console.log('db getSymbolDetails found ', detail);
+    return detail;
+}
+
+
 module.exports = {
     getLastTrade,
+    getSymbolDetails,
 }

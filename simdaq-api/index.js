@@ -12,6 +12,6 @@ const start = async () => {
 }
 
 fastify.register(require('./routes/equities'))
-
+fastify.register(require('./routes/reference'))
 
 start();
