@@ -118,11 +118,11 @@ function setChangeIndicator(newPrice, originalPrice){
     }
 }
 function getRandomPriceInRange(originalPrice) {
+    originalPrice *= 100;
     let min = originalPrice - (originalPrice * .05);
     let max = originalPrice + (originalPrice * .05);
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    const newPrice =  Math.floor(Math.random() * (max - min + 1) + min);
+    return +(Math.round(newPrice/100 + "e+2")  + "e-2")
 }
 
 function getSymbolDetails(symbol){

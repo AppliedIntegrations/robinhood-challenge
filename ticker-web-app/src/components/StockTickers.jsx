@@ -1,20 +1,12 @@
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { StockTicker } from './StockTicker';
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-} from 'recharts';
 import './StockTickers.css';
 
 export function StockTickers({symbols}) {
 
     const [stocks, setStocks] = useState([]);
-    const [chartData, setChartData] = useState([]);
     const [chartDataObject, setChartDataObject] = useState({});
-
 
     useEffect(() => {
         const socket = io('http://localhost:3000', {
@@ -26,19 +18,12 @@ export function StockTickers({symbols}) {
         });
         
         socket.on('connect', () => {
-            // console.log('request stocks ', symbols);
             socket.emit('request-stocks', symbols);
         });    
 
         socket.on('stocks', stockUpdate => {
             setStocks(currentStocks => {
                 return applyStockUpdate(currentStocks, stockUpdate);
-            });
-            setChartData(currentChartData => {
-                return [...currentChartData, {
-                    symbol: stockUpdate[0].symbol,
-                    price: stockUpdate[0].price,
-                }]
             });
             setChartDataObject(currentChartData => {
                 const newState = JSON.parse(JSON.stringify(currentChartData));
@@ -62,10 +47,7 @@ export function StockTickers({symbols}) {
     function applyStockUpdate(currentStocks, stockUpdate) {
         if(currentStocks.length === 0){
             for(let stockUpdateItem of stockUpdate){
-                stockUpdateItem.priceHistory = [{
-                    symbol: stockUpdateItem.symbol,
-                    price: stockUpdateItem.price,
-                }]
+                stockUpdateItem.percentageChange = 0.00;
             }
             return stockUpdate;
         } else {
@@ -77,10 +59,6 @@ export function StockTickers({symbols}) {
                 const difference = newPriceData.price - originalPrice;
                 stock.price = newPriceData.price;
                 stock.percentageChange = +(Math.round((difference/originalPrice)*100 + "e+2")  + "e-2");
-                stock.priceHistory.push({
-                    symbol: stock.symbol,
-                    price: stock.price,                    
-                });
                 return stock;
             });            
             return updatedStocks;

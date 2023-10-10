@@ -33,10 +33,10 @@ export function StockTicker({ symbol, securityName, price, percentageChange, cha
                 </div>
             </div>
             <div className='ticker-cell'>
-                <div className='price'>{price}</div>
+                <div className='price'>{price.toFixed(2)}</div>
             </div>
             <div className='ticker-cell'>
-                <div className={percentageChangeClass}>{percentageChange}%</div>
+                <div className={percentageChangeClass}>{percentageChange.toFixed(2)}%</div>
             </div>
         </div>
         <hr className='stock-tickers-hr'/>
