@@ -5,8 +5,7 @@ const {
     getSymbolDetails,
 } = require('../controllers/reference')
 
-// LastTrade schema
-const SymbolDetails = {
+const SymbolDetailsSchema = {
     type: 'object',
     properties: {
         symbol: {
@@ -30,7 +29,7 @@ const SymbolDetails = {
 const getSymbolDetailsOptions = {
     schema: {
       response: {
-        200: SymbolDetails
+        200: SymbolDetailsSchema
       },
     },
     handler: getSymbolDetails,

@@ -1,4 +1,4 @@
-const db = require('../ports/db')
+const db = require('../ports/db');
 
 function getLastTrade(req, reply) {
     let { symbols } = req.params;

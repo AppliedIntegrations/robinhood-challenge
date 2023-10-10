@@ -2,13 +2,11 @@
 // GET https://<base_url>/v1/<source>/<offset>/equities/lasttrade/<symbols>
 // 'https://example.com/v1/nasdaq/realtime/equities/lasttrade/ZVZZT' \ --header "Authorization: Bearer example_token"
 
-
 const {
     getLastTrade,
 } = require('../controllers/equities')
 
-// LastTrade schema
-const LastTrade = {
+const LastTradeSchema = {
     type: 'object',
     properties: {
         symbol: {
@@ -38,19 +36,17 @@ const LastTrade = {
     },
 }
 
-
 const getLastTradeOptions = {
     schema: {
       response: {
         200: {
             type: 'array',
-            lastTrades: LastTrade,
+            lastTrades: LastTradeSchema,
         }
       },
     },
     handler: getLastTrade,
 }
-
 
 function equitiesRoutes(fastify, options, done) {
 
@@ -59,6 +55,5 @@ function equitiesRoutes(fastify, options, done) {
 
     done();
 }
-
 
 module.exports = equitiesRoutes
