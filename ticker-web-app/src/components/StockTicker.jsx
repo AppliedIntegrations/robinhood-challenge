@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import {
     LineChart,
     Line,
-    XAxis,
-    YAxis,
 } from 'recharts';
 import './StockTicker.css'
 
@@ -20,14 +18,14 @@ export function StockTicker({ symbol, securityName, price, percentageChange, cha
 
     return (
       <>
-        <div className="ticker-row">
+        <div className="ticker-row" key={'row-'+symbol}>
             <div className='ticker-cell'>
                 <div className='symbol'>{symbol}</div>
                 <div className='name'>{securityName}</div>
             </div>
             <div className='ticker-cell'>
                 <div className='chart'>
-                    <LineChart width={110} height={100} data={chartData}>
+                    <LineChart key={'chart-'+symbol} width={110} height={100} data={chartData}>
                         <Line type="monotone" dataKey="price" stroke={chartColor} />
                     </LineChart>
                 </div>

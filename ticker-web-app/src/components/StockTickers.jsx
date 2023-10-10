@@ -9,6 +9,7 @@ import './StockTickers.css';
 
 export function StockTickers({symbols}) {
 
+    const [uniqueKey, setUniqueKey] = useState(0);
     const [stocks, setStocks] = useState([]);
     const [chartDataObject, setChartDataObject] = useState({});
 
@@ -32,6 +33,9 @@ export function StockTickers({symbols}) {
             setChartDataObject(currentPriceHistory => {
                 return applyPriceHistoryUpdate(currentPriceHistory, stockUpdate);
             });
+            setUniqueKey(currentValue => {
+                return performance.now();
+            });
         });
         return function cleanup() {
             socket.disconnect();
@@ -47,16 +51,13 @@ export function StockTickers({symbols}) {
         <hr className='stock-tickers-hr'/>
         <div className="stock-ticker-list">
             {stocks.length === 0 && "No Stocks"}
-            {stocks.map(stock => {
+            {stocks.map((stock, index) => {
                 stock.chartData = chartDataObject[stock.symbol];
                 return (
-                    <>
-                        <StockTicker
-                            {...stock}
-                            key={'ticker-'+stock.symbol}
-                        >
-                        </StockTicker>
-                    </>
+                    <StockTicker
+                        key={'ticker-'+stock.symbol}
+                        {...stock}
+                    />
                 )
             })}
         </div>
