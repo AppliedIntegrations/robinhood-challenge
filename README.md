@@ -1,10 +1,10 @@
 # robinhood-challenge
 
-## Build dependency
+## Build dependencies
 node v18.18.0
 npm  v9.8.1
 
-## (A) React Hooks based web site to show up to date ticker information
+## Fake "NASDAQ" API which provides ticker information to the (B) Node API server.
 
 Open a terminal in ./simdaq-api directory
 and run the following command to install packages:
@@ -22,7 +22,7 @@ To run unit tests use the following command:
 >npm test
 ```
 
-## (B) Node server to handle API requests
+## Node server to handle API requests
 Open a terminal in ./ticker-web-api directory
 and run the following command to install packages:
 ```
@@ -40,7 +40,7 @@ To run unit tests use the following command:
 ```
 
 
-## (C) fake "NASDAQ" API which provides ticker information to the (B) Node API server.
+## React Hooks based web site to show up to date ticker information
 Open a terminal in ./ticker-web-app directory
 and run the following command to install packages:
 ```
