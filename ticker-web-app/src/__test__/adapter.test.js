@@ -84,4 +84,81 @@ describe('ticketAdapters', () => {
 
     });
 
+    describe('applyPriceHistoryUpdate', () => {
+        it('should return an object with keys for each stock symbol in the update that are not already in the current state', () => {
+            const expectedObject1 = {
+                symbol: 'foo',
+            };
+            const expectedObject2 = {
+                symbol: 'bar',
+            };
+            const stockUpdate = [
+                expectedObject1,
+                expectedObject2,
+            ];
+            const result = applyPriceHistoryUpdate({}, stockUpdate);
+
+            expect(result[expectedObject1.symbol]).toBeDefined();
+            expect(result[expectedObject2.symbol]).toBeDefined();
+        });
+
+        it('should return an object with array of price history when current state is uninitialized', () => {
+            const expectedObject1 = {
+                symbol: 'foo',
+                price: 44.77,
+            };
+            const expectedObject2 = {
+                symbol: 'bar',
+                price: 88.22,
+            };
+            const stockUpdate = [
+                expectedObject1,
+                expectedObject2,
+            ];
+            const result = applyPriceHistoryUpdate({}, stockUpdate);
+
+            expect(result[expectedObject1.symbol]).toEqual([expectedObject1]);
+            expect(result[expectedObject2.symbol]).toEqual([expectedObject2]);
+        });
+        
+        it('should return an object containing updated price history arrays with new price data when current state is initialized', () => {
+            const currentFoo = {
+                symbol: 'foo',
+                price: 44.77,
+            };
+            const currentBar = {
+                symbol: 'bar',
+                price: 88.22,
+            };
+            const currentPriceHistory = {
+                [currentFoo.symbol]: [currentFoo],
+                [currentBar.symbol]: [currentBar],
+            }
+            const newFooPrice = {
+                symbol: 'foo',
+                price: 55.88,
+            };
+            const newBarPrice = {
+                symbol: 'bar',
+                price: 99.07,
+            };
+            const stockUpdate = [
+                newFooPrice,
+                newBarPrice,
+            ];
+            const expectedFooPriceHistory = [
+                currentFoo,
+                newFooPrice,
+            ];
+            const expectedBarPriceHistory = [
+                currentBar,
+                newBarPrice,
+            ]
+
+            const result = applyPriceHistoryUpdate(currentPriceHistory, stockUpdate);
+
+            expect(result['foo']).toEqual(expectedFooPriceHistory);
+            expect(result['bar']).toEqual(expectedBarPriceHistory);
+        });         
+    });
 })
