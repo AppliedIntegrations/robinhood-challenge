@@ -8,49 +8,46 @@ const lastTrades = [
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-
-        // percentageChange: 5.0,
     },
     {
         symbol:'BKR',
+        timestamp: "2021-07-09T09:17:01.383",
         price: 33.73,
         size: 9,
         conditions: "@ To",
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-        // percentageChange: 5.0,
     },
     {
         symbol:'CPRT',
+        timestamp: "2021-07-09T09:17:01.383",
         price: 44.83,
         size: 9,
         conditions: "@ To",
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-        // percentageChange: -5.0,
     },
     {
         symbol:'PDD',
+        timestamp: "2021-07-09T09:17:01.383",
         price: 105.64,
         size: 9,
         conditions: "@ To",
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-
-        // percentageChange: 5.0,
     },
     {
         symbol:'CRWD',
+        timestamp: "2021-07-09T09:17:01.383",
         price: 176.69,
         size: 9,
         conditions: "@ To",
         exchange: "Q",
         securityClass: "Q",
         changeIndicator: 0,
-        // percentageChange: 5.0,
     },
 ];
 
@@ -93,8 +90,6 @@ const symbolDetails = [
 ]
 
 function getLastTrade(symbols){
-    console.log('symbols ', symbols);
-
     const result = lastTrades
         .filter(lastTrade => (symbols.includes(lastTrade.symbol)))
         .map(lastTrade => {
@@ -104,7 +99,6 @@ function getLastTrade(symbols){
             return lastTrade;
         });
 
-    console.log('result is ', result);
     return result;
 }
 
@@ -131,7 +125,6 @@ function getSymbolDetails(symbol){
             return true
         }
     });
-    console.log('db getSymbolDetails found ', detail);
     return detail;
 }
 

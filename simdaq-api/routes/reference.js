@@ -27,7 +27,6 @@ const SymbolDetails = {
     },
 }
 
-
 const getSymbolDetailsOptions = {
     schema: {
       response: {
@@ -36,7 +35,6 @@ const getSymbolDetailsOptions = {
     },
     handler: getSymbolDetails,
 }
-
 
 function referencRoutes(fastify, options, done) {
 
