@@ -5,7 +5,6 @@ import {
     applyStockUpdate,
     applyPriceHistoryUpdate
 } from '../adapters/tickerAdapters.js'
-
 import './StockTickers.css';
 
 export function StockTickers({symbols}) {
@@ -14,7 +13,7 @@ export function StockTickers({symbols}) {
     const [chartDataObject, setChartDataObject] = useState({});
 
     useEffect(() => {
-        const socket = io('http://localhost:3000', {
+        const socket = io(import.meta.env.VITE_TICKET_WEB_API_HOST, {
             withCredentials: true,
             transports: [
                 'websocket',
@@ -23,10 +22,10 @@ export function StockTickers({symbols}) {
         });
         
         socket.on('connect', () => {
-            socket.emit('request-stocks', symbols);
-        });    
+            socket.emit(import.meta.env.VITE_REQUEST_STOCKS_EVENT_NAME, symbols);
+        });
 
-        socket.on('stocks', stockUpdate => {
+        socket.on(import.meta.env.VITE_STOCK_UPDATE_EVENT_NAME, stockUpdate => {
             setStocks(currentStocks => {
                 return applyStockUpdate(currentStocks, stockUpdate);
             });
