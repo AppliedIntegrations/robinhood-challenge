@@ -4,7 +4,7 @@
 node v18.18.0
 npm  v9.8.1
 
-## Fake "NASDAQ" API which provides ticker information to the (B) Node API server.
+## Fake "NASDAQ" API which provides ticker information to the Node API server.
 
 Open a terminal in ./simdaq-api directory
 and run the following command to install packages:
