@@ -1,5 +1,4 @@
 // (B) Node server to handle API requests
-const simdaqApi = require('./ports/simdaqApi');
 const io = require('socket.io')(3000, {
     cors: {
         origin: [
@@ -7,6 +6,7 @@ const io = require('socket.io')(3000, {
         ]
     }
 });
+const stockTicker = require('./controllers/stockTicker')
 
 const clientIntervals = {};
 
@@ -14,12 +14,12 @@ io.on('connection', client => {
     console.log('client id ', client.id);
 
     client.on('request-stocks', async (symbols) => {
-        // need to get the lastTrade and reference/symbol 
-        const initialLastTrades = await simdaqApi.getLastTrade(symbols);
+        const initialLastTrades = await stockTicker.getInitialTickerData(symbols);
+        // console.log('initialLastTrades ', initialLastTrades);
         client.emit('stocks', initialLastTrades);
 
         const interval = setInterval(async () => {
-            const stocks = await simdaqApi.getLastTrade(symbols);
+                const stocks = await stockTicker.getLastTrade(symbols);
             client.emit('stocks', stocks);
             console.log('emitting stocks ', stocks);
         }, 1000);

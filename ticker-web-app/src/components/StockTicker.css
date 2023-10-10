@@ -16,11 +16,14 @@
     text-align: left;;
 }
 .ticker-row .ticker-cell:nth-child(2){
-    min-width: 160px;
-    text-align: right;
+    min-width: 100px;
 }
 .ticker-row .ticker-cell:nth-child(3){
-    min-width: 160px;
+    min-width: 120px;
+    text-align: right;
+}
+.ticker-row .ticker-cell:nth-child(4){
+    min-width: 120px;
 }
 .symbol {
     color: #333;
