@@ -9,7 +9,7 @@ const {
 const fetch = require('node-fetch');
 jest.mock('node-fetch', () => {
     return jest.fn();
-})
+});
 
 const SIMDAQ_API_HOST = process.env.SIMDAQ_API_HOST;
 const SIMDAQ_API_LAST_TRADE_PATH = process.env.SIMDAQ_API_LAST_TRADE_PATH;
