@@ -21,6 +21,11 @@ describe('priceFunctions', () => {
     });
 
     describe('getRandomPriceInRange', () => {
-
+        it('should return a price that is greater than or less than the original price by at most 5%', () => {
+            const originalPrice = 100;
+            const result = getRandomPriceInRange(originalPrice);
+            expect(result).toBeLessThan(105)
+            expect(result).toBeGreaterThan(95)
+        });
     });
 })
