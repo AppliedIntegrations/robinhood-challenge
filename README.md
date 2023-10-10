@@ -41,7 +41,7 @@ To run unit tests use the following command:
 
 
 ## (C) fake "NASDAQ" API which provides ticker information to the (B) Node API server.
-Open a terminal in ./ticker-web-api directory
+Open a terminal in ./ticker-web-app directory
 and run the following command to install packages:
 ```
 >npm i
