@@ -59,3 +59,7 @@ To run unit tests use the following command:
 
 ## To run the whole system
 Perform each of the "To run" instructions above in order.
+
+![alt text](https://github.com/AppliedIntegrations/robinhood-challenge/blob/main/StockTicker.gif "Running Example of App")
+
+
