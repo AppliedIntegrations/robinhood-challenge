@@ -157,8 +157,8 @@ describe('ticketAdapters', () => {
 
             const result = applyPriceHistoryUpdate(currentPriceHistory, stockUpdate);
 
-            expect(result['foo']).toEqual(expectedFooPriceHistory);
-            expect(result['bar']).toEqual(expectedBarPriceHistory);
+            expect(result[currentFoo.symbol]).toEqual(expectedFooPriceHistory);
+            expect(result[currentBar.symbol]).toEqual(expectedBarPriceHistory);
         });         
     });
 })

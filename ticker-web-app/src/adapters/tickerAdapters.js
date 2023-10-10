@@ -21,9 +21,7 @@ export function applyStockUpdate(currentStocks, stockUpdate) {
 
 export function applyPriceHistoryUpdate(currentPriceHistory, stockUpdate) {
     const newState = JSON.parse(JSON.stringify(currentPriceHistory));
-    console.log('currentPriceHistory ', newState)
     for(let stockUpdateItem of stockUpdate){
-        console.log('loop stock update ', stockUpdateItem)
         if(!Array.isArray(newState[stockUpdateItem.symbol])) {
             newState[stockUpdateItem.symbol] = [];
         }
@@ -31,7 +29,6 @@ export function applyPriceHistoryUpdate(currentPriceHistory, stockUpdate) {
             symbol: stockUpdateItem.symbol,
             price: stockUpdateItem.price,
         });
-        console.log('after append newState is ', newState);
     }
     return newState;    
 }
