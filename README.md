@@ -4,7 +4,7 @@
 node v18.18.0
 npm  v9.8.1
 
-## Fake "NASDAQ" API which provides ticker information to the Node API server.
+## Imitation NASDAQ REST API which serves ticker information for the Node WebSocket API server.
 
 Open a terminal in ./simdaq-api directory
 and run the following command to install packages:
@@ -22,7 +22,7 @@ To run unit tests use the following command:
 >npm test
 ```
 
-## Node server to handle API requests
+## Node WebSocket server to handle API requests
 Open a terminal in ./ticker-web-api directory
 and run the following command to install packages:
 ```
